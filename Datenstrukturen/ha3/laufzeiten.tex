@@ -1,0 +1,51 @@
+\documentclass[a4paper,11pt]{scrartcl}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+%opening
+\title{Zeitkomplexitäten der Teilaufgaben}
+\author{Matrikelnummer 381165}
+
+\begin{document}
+    
+    \maketitle
+    
+    \section{Erstellung und Ausgabe der Dominosteinliste}
+    
+    \begin{itemize}
+        \item es wird stets die Datei einmal komplett durchlaufen und eingelesen: $O(n)$
+        \begin{itemize}
+            \item dabei wird mit konstanter Anzahl an Operationen bei jeder zweiten Zahl ein Listenelement erstellt: $O(1)$
+        \end{itemize}
+        \item anschließend wird die Liste stets komplett lesend durchlaufen, um die Elemente darzustellen: $O(n)$
+        \item Zeitkomplexität der ganzen Teilaufgabe: $O(n \cdot 1 + n) \Rightarrow{} O(n)$
+    \end{itemize}
+    
+    \section{Erstellung der Kreise}
+    
+    \begin{itemize}
+        \item es werden insgesamt genau so viele Kreiselemente erstellt wie Listenelemente aus Aufgabe 1 vorhanden sind: $O(n)$
+        \begin{itemize}
+            \item dabei muss immer ein variabler Teil der verbleibenden Dominoliste durchiteriert werden: $O(\frac{n}{2}) \Rightarrow{} O(n)$
+        \end{itemize}
+
+        \item Zeitkomplexität der ganzen Teilaufgabe: $O(n \cdot \frac{n}{2}) \Rightarrow{} O(n^2)$
+    \end{itemize}
+    
+    \section{Ausgabe der Kreise}
+    
+    \begin{itemize}
+        \item  es werden ggf. mehrere Ringlisten nacheinander stets einmal komplett durchlaufen und die Elemente dabei ausgegeben: $O(n)$
+        \item dabei ist die Summe der insgesamt ausgegebenen Kreiselemente gleich der der Listenelemente aus Aufgabe 1
+        \item Zeitkomplexität der ganzen Teilaufgabe: $O(n)$
+    \end{itemize}
+    
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

@@ -1,0 +1,73 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\title{Laufzeitkomplexitäten}
+\author{Matrikelnr. 381165}
+\date{23.06.2015}
+
+\begin{document}
+\maketitle
+
+Wenn nicht anders angegeben, haben die Matrizen $m$ Zeilen und $n$ Spalten, 
+bei quadratischen Matrizen jeweils $n$ Zeilen und Spalten.
+
+\section{Transposition}
+Die \texttt{trp}-Methode setzt sich aus fünf Teilen zusammen:
+
+\begin{itemize}
+    \item Kopieren der eigenen Instanz
+    \item Löschen des Inhalts der eigenen Instanz
+    \item Neuanlegen von Zeilen und Spalten in der eigenen Instanz
+    \item umgekehrtes Versehen mit Werten der Elemente der eigenen Instanz
+    \item Löschen der Kopie der eigenen Instanz
+\end{itemize}
+
+Da alle Teile der Methode jeweils sämtliche Matrixelemente durchlaufen, hat 
+diese eine Komplexität von $O(mn)$, im Falle von quadratischen Matrizen 
+dementsprechend $O(n^2)$.
+
+\section{Addition}
+Es wird jedes einzelne Matrixelement um den Wert eines zu addierenden 
+Elements erhöht oder verringert. Damit ergibt sich auch hier eine Komplexität 
+$O(mn)$ – bei quadratischen Matrizen $O(n^2)$.
+
+\section{Multiplikation}
+Hier habe die erste Matrix $l$ Zeilen und $m$ Spalten, die zweite $m$ Zeilen 
+und $n$ Spalten. Für die Multiplikation muss zunächst mit $O(ln)$ eine neue 
+Matrix mit den „äußeren Dimensionen“\footnote{das Ergebnis hat so viele 
+Zeilen wie die erste und so viele Spalten wie die zweite Matrix, bei $(L 
+\times M)$ und $(M \times N)$ sind dies die äußeren Angaben} angelegt werden. 
+
+Bei der Matrixmultiplikation an sich werden drei verschachtelte Schleifen 
+durchlaufen, wobei jeweils eine $l$, $m$ respektive $n$ Durchläufe hat. 
+Dadurch ergibt sich eine Komplexität $O(lmn)$ bzw. bei quadratischen Matrizen 
+$O(n^3)$.
+
+Die Ausgabe und das Löschen der Ergebnismatrix haben wie auch deren 
+Erstellung eine Komplexität $O(ln)$.
+
+Insgesamt hat die Multiplikation somit eine Komplexität von $O(lmn)$.
+
+\section{Orthogonalitätstest}
+Der Orthogonalitätstest setzt sich zusammen aus einem Kopiervorgang, einer 
+Transposition sowie Matrixlöschungen mit $O(mn)$, einer Matrixmultiplikation 
+mit $O(lmn)$ und einem Test nach einer Einheitsmatrix, bei dem alle Elemente 
+betrachtet werden, mit $O(mn)$.
+
+Da die Matrixmultiplikation am aufwändigsten ist, hat die 
+\texttt{ort}-Methode eine Komplexität $O(lmn)$ bzw. $O(n^3)$.
+
+\section{Symmetrietest}
+Hierzu wird nur bei der oberen Dreiecksmatrix, also nur ungefähr die Hälfte 
+der Elemente, betrachtet. Da dies allerdings nur einen konstanten Faktor 
+ausmacht, ergibt sich auch hier eine Komplexität $O(mn)$.
+
+\end{document}
+ 

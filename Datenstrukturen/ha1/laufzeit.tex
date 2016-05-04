@@ -1,0 +1,47 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+
+\date{03.05.2015}
+\author{Benedikt Geißler}
+
+\begin{document}
+
+\section*{Funktionen für P und S}
+
+Da sich die Werte für $P$ und $S$ ungefähr proportional entwickeln (siehe 
+Graph, beide Achsen logarithmisch: linear ansteigender Graph bedeutet 
+ebenfalls konstante Steigung), lassen 
+sich deren Funktionen $P(N)$ und $S(N)$ durch einen Punkt ermitteln:
+
+\begin{align*}
+  m_P &= \frac{P_1}{N_1} = \frac{82025}{1048576} \approx 0,0782 \\
+  P(N) &= 0,0782 \cdot N \\
+  m_S &= \frac{S_1}{N_1} = \frac{2228882}{1048576} \approx 2,1256 \\
+  S(N) &= 2,1256 \cdot N
+\end{align*}
+
+\section*{Laufzeit}
+Die Funktion \emph{erathostenes} kann man in drei Blöcke einteilen:
+
+\begin{itemize}
+  \item Initialisierung: Zeile 18 bis 23
+  \item Sieben nach Erathostenes: Z. 25 bis 35
+  \item Zählen der Primzahlen: Z. 37 bis 40
+\end{itemize}
+
+Der erste und der letzte Block haben jeweils eine  Komplexität $O(n)$, da ein 
+Feld ungefähr der Größe $N$ komplett durchlaufen wird und auf die einzelnen 
+Elemente Operationen konstanter Laufzeit ausgeführt werden.
+
+Im mittleren Block hat die äußere Schleife ungefähr $\sqrt{N}$ Durchläufe 
+($m$ läuft von 2 bis zu $\lfloor\sqrt{N}\rfloor$), die innere Schleife 
+maximal $N - 4$ Durchläufe mit konstanter Laufzeit. Somit ergibt sich hier 
+eine Komplexität von $O(n\sqrt{n}) = O(n^{\frac{3}{2}})$, welche auch die 
+obere Komplexitätsschranke der gesamten Funktion darstellt.
+
+\includegraphics{ergebnis.pdf}
+\end{document}

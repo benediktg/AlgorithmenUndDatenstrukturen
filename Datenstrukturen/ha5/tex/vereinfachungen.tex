@@ -1,0 +1,37 @@
+\documentclass[a4paper,11pt]{scrartcl}
+
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+
+\author{Matrikelnr. 381165}
+\title{Vereinfachungen}
+\date{04.07.2015}
+
+\newcommand{\ra}{&\Rightarrow{}}
+\newcommand{\add}[3]{#1 + #2 \ra #3 \\}
+\newcommand{\sub}[3]{#1 - #2 \ra #3 \\}
+\newcommand{\mul}[3]{#1 \ast #2 \ra #3 \\}
+
+\begin{document}
+\maketitle
+
+\begin{align*}
+    \mul{Z}{0}{0}  % 1
+    \mul{0}{Z}{0}  % 2
+    \add{Z}{0}{Z}  % 3
+    \sub{Z}{0}{Z}  % 4
+    \mul{Z}{1}{Z}  % 5
+    \sub{0}{Z}{-Z}  % 6
+    \mul{-1}{Z}{-Z}  % 7
+    \mul{1}{Z}{Z}  % 8
+    \add{0}{Z}{Z}  % 9
+    \mul{Z}{-1}{-Z}  % 10
+    \sub{Z}{Z}{0}  % 11
+    \add{Z}{-Z}{0}  % 12
+    \add{-Z}{Z}{0}  % 13
+\end{align*}
+\end{document}
+\grid
